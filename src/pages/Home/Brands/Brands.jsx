@@ -8,6 +8,7 @@ import moonstar from '../../../assets/brands/moonstar.png'
 import randstad from '../../../assets/brands/randstad.png'
 import star from '../../../assets/brands/star.png'
 import start_people from '../../../assets/brands/start_people.png'
+import { Autoplay } from 'swiper/modules';
 
 const brandLogos = [amazon, amazon_vector, casio, moonstar, randstad, star, start_people];
 
@@ -16,20 +17,36 @@ const brandLogos = [amazon, amazon_vector, casio, moonstar, randstad, star, star
 
 const Brands = () => {
     return (
-        <Swiper
-            slidesPerView={4}
-            centeredSlides={true}
-            spaceBetween={30}
-            grabCursor={true}
+        <div className='py-10'>
+            <Swiper
+                slidesPerView={4}
+                centeredSlides={true}
+                spaceBetween={30}
+                grabCursor={true}
+                modules={[Autoplay]}
+                autoplay={{
+                    delay: 1000,
+                    disableOnInteraction: false,
+                }}
 
-        >
-            {
-                brandLogos.map((logo, index) => <SwiperSlide key={index}>{logo}</SwiperSlide>)
-            }
+            >
+                {
+                    brandLogos.map((logo, index) => (
+                        <SwiperSlide key={index}>
+                            <img
+                                src={logo}
+                                alt={`Brand ${index}`}
+                                className=" w-30 h-auto object-contain "
+                            />
+                        </SwiperSlide>
+                    ))
+
+                }
 
 
-            
-        </Swiper>
+
+            </Swiper>
+        </div>
     );
 };
 
