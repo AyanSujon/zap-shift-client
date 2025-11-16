@@ -3,10 +3,12 @@ import logo from '../../assets/logo.png'
 
 const Logo = () => {
     return (
-        <div>
+        <div className='flex items-end '>
             <img src={logo} alt="Site Logo" />
+            <h3 className='text-2xl font-bold -ms-2.5'>zapShift</h3>
         </div>
     );
 };
 
 export default Logo;
+
