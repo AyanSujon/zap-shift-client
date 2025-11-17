@@ -38,9 +38,9 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">
+                <Link to={'/'} className=" text-xl">
                     <Logo></Logo>
-                </a>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -52,7 +52,7 @@ const Navbar = () => {
                     user? <Link onClick={handleLogOut} className="btn">Log Out</Link> :
                     <Link to={'/login'} className="btn">Login</Link>
                 }
-                <Link to={'/be-a-rider'} className="btn btn-primary text-black ml-2">Be a rider</Link>
+                <Link to={'/rider'} className="btn btn-primary text-black ml-2">Be a rider</Link>
                 
             </div>
         </div>
