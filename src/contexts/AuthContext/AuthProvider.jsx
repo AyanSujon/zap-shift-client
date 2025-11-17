@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
     const authInfo = {
         registerUser,
         signInUser,
-        
+
 
     }
 
