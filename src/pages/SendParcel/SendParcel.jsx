@@ -12,7 +12,7 @@ const SendParcel = () => {
     }
 
     return (
-        <div>
+        <div className='py-5'>
             <h2 className="text-5xl font-bold">Send A Parcel</h2>
             <form onSubmit={handleSubmit(handleSendParcel)} className='mt-12 p-4 text-black'>
                 {/* Document */}
@@ -47,7 +47,7 @@ const SendParcel = () => {
                             <input type="text" {...register('senderName')} className="input w-full mb-4" placeholder="Sender Name" />
 
                             {/*  Address */}
-                            <label className="label">Address</label>
+                            <label className="label">Sender Address</label>
                             <input type="text" {...register('senderAddress')} className="input w-full mb-4" placeholder="Address" />
 
 
@@ -56,8 +56,8 @@ const SendParcel = () => {
                             <input type="text" {...register('senderPhoneNo')} className="input w-full mb-4" placeholder="Sender Phone No" />
 
                             {/* Your District */}
-                            <label className="label">Your District</label>
-                            <input type="text" {...register('yourDistrict')} className="input w-full mb-4" placeholder="Select your District" />
+                            <label className="label">Sender District</label>
+                            <input type="text" {...register('senderDistrict')} className="input w-full mb-4" placeholder="Select your District" />
 
                             <label className="label">Pickup Instruction</label>
                             <textarea {...register('pickupInstruction')} className="textarea h-24 w-full mb-4" placeholder="Pickup Instruction"></textarea>
