@@ -25,11 +25,12 @@ export const router = createBrowserRouter([
         {
           path: '/send-parcel',
           element: <PrivateRoute><SendParcel/></PrivateRoute>,
+          loader: ()=> fetch('/service-centers.json').then(res => res.json()),
         },
         {
           path: '/coverage',
           Component: Coverage,
-          loader: ()=> fetch('/service-centers.json').then(res => res.json())
+          loader: ()=> fetch('/service-centers.json').then(res => res.json()),
         }
     ]
   },
