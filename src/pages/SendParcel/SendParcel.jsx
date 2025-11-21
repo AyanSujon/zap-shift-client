@@ -13,7 +13,7 @@ const SendParcel = () => {
         control,
         // formState: { errors } 
     } = useForm();
-const {user}= useAuth();
+    const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const serviceCenters = useLoaderData();
     // console.log(serviceCenters);
@@ -127,7 +127,17 @@ const {user}= useAuth();
                         <fieldset className="fieldset ">
                             {/* Sender Name */}
                             <label className="label">Sender Name</label>
-                            <input type="text" {...register('senderName')} className="input w-full mb-4" placeholder="Sender Name" />
+                            <input type="text" {...register('senderName')} 
+                            defaultValue={user?.displayName}
+                            className="input w-full mb-4" placeholder="Sender Name" />
+
+                            {/* Sender Email */}
+                            <label className="label">Sender Email</label>
+                            <input type="email" {...register('senderEmail')} 
+                            defaultValue={user?.email}
+                            className="input w-full mb-4" placeholder="Sender Name" />
+
+
 
                             {/*  Address */}
                             <label className="label">Sender Address</label>
