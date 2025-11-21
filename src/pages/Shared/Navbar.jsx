@@ -5,8 +5,6 @@ import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
     const {user, logOut} = useAuth();
-
-
     const handleLogOut = ()=>{
         logOut()
         .then()
@@ -23,6 +21,12 @@ const Navbar = () => {
         <li><NavLink to={"/"}>About Us</NavLink></li>
         <li><NavLink to={"/send-parcel"}>Send Parcel</NavLink></li>
         <li><NavLink to={"/coverage"}>Coverage</NavLink></li>
+        {
+            user && <>
+                 <li><NavLink to={"/dashboard/my-parcels"}>My Parcels</NavLink></li>
+                 
+            </>
+        }
 
 
     </>
