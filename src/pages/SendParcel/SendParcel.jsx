@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAuth from '../../hooks/useAuth';
@@ -16,6 +16,7 @@ const SendParcel = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const serviceCenters = useLoaderData();
+    const navigate = useNavigate();
     // console.log(serviceCenters);
     const regionsDuplicate = serviceCenters.map(c => c.region);
     const regions = [...new Set(regionsDuplicate)];
@@ -64,8 +65,8 @@ const SendParcel = () => {
             }
         }
         console.log(cost);
-        data.cost = cost; 
-        
+        data.cost = cost;
+
 
 
         Swal.fire({
@@ -75,14 +76,24 @@ const SendParcel = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "I Agree!"
+            confirmButtonText: "Confirm and continue payment!"
         }).then((result) => {
             if (result.isConfirmed) {
 
                 // save the parcel info to the database 
                 axiosSecure.post('/parcels', data)
                     .then(res => {
-                        console.log("After Savings Parcel: ", res.data)
+                        console.log("After Savings Parcel: ", res.data);
+                        if (res.data.insertedId) {
+                            navigate('/dashboard/my-parcels')
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Parcel has created. Please Pay",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
                     })
 
                 // Swal.fire({
@@ -128,15 +139,15 @@ const SendParcel = () => {
                         <fieldset className="fieldset ">
                             {/* Sender Name */}
                             <label className="label">Sender Name</label>
-                            <input type="text" {...register('senderName')} 
-                            defaultValue={user?.displayName}
-                            className="input w-full mb-4" placeholder="Sender Name" />
+                            <input type="text" {...register('senderName')}
+                                defaultValue={user?.displayName}
+                                className="input w-full mb-4" placeholder="Sender Name" />
 
                             {/* Sender Email */}
                             <label className="label">Sender Email</label>
-                            <input type="email" {...register('senderEmail')} 
-                            defaultValue={user?.email}
-                            className="input w-full mb-4" placeholder="Sender Name" />
+                            <input type="email" {...register('senderEmail')}
+                                defaultValue={user?.email}
+                                className="input w-full mb-4" placeholder="Sender Name" />
 
 
 
