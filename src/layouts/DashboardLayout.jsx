@@ -1,6 +1,8 @@
 import React from 'react';
 import { BiSolidShoppingBags } from 'react-icons/bi';
 import { Link, NavLink, Outlet } from 'react-router';
+import { FaRegCreditCard } from "react-icons/fa";
+
 
 const DashboardLayout = () => {
     return (
@@ -40,6 +42,13 @@ const DashboardLayout = () => {
                                 <BiSolidShoppingBags />
 
                                 <span className="is-drawer-close:hidden">My Parcels</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={"/dashboard/payment-history"}>
+                                <FaRegCreditCard />
+
+                                <span className="is-drawer-close:hidden">Payment History</span>
                             </NavLink>
                         </li>
 
